@@ -1,0 +1,65 @@
+# Krishna Music School — redirects (paste ABOVE the "# BEGIN WordPress" block in .htaccess)
+# Hostinger runs LiteSpeed, which reads these Apache rules.
+#
+# Section A: required now (broken footer links, junk and duplicate pages, old class pages).
+# Section B: recommended blog consolidation. Check Search Console clicks first; if a post
+#            gets meaningful traffic, merge its best content into the target before enabling.
+# Section C: off-brand pages to remove (410 Gone tells Google they were removed on purpose).
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# ---------- A. Required now ----------
+# Footer links that pointed at pages that never existed
+RewriteRule ^terms-of-service/?$ /terms-and-conditions/ [R=301,L]
+RewriteRule ^policies/?$ /refund-policy/ [R=301,L]
+RewriteRule ^how-to-enroll/?$ /online-classes/ [R=301,L]
+RewriteRule ^tech-requirements/?$ /online-classes/ [R=301,L]
+RewriteRule ^booking-process/?$ /folk-music-band-chokhi-vini-project-pushkar/ [R=301,L]
+
+# Divi demo pages, the old duplicate homepage, WooCommerce leftovers
+RewriteRule ^courses/?$ /online-classes/ [R=301,L]
+RewriteRule ^events/?$ /8-day-winter-music-retreat-in-pushkar-singing-mantra-chanting-kirtan-harmonium/ [R=301,L]
+RewriteRule ^shop-now/?$ /online-classes/ [R=301,L]
+RewriteRule ^shop/?$ /online-classes/ [R=301,L]
+RewriteRule ^(cart|checkout|my-account)/?$ / [R=301,L]
+RewriteRule ^home/?$ / [R=301,L]
+RewriteRule ^pushkar-retreat-guidelines-terms-of-participation-2/?$ /pushkar-retreat-guidelines-terms-of-participation/ [R=301,L]
+RewriteRule ^music-classes-bhagsu-himachal/?$ /summer-music-retreat-upper-bhagsu/ [R=301,L]
+
+# Old class pages → new class pages (old pages have contradictory prices and invented testimonials)
+RewriteRule ^mantra-chanting-harmonium-workshops/?$ /online-classes/harmonium/ [R=301,L]
+RewriteRule ^singing-workshops/?$ /online-classes/singing/ [R=301,L]
+RewriteRule ^bhajan-kirtan-singing-workshops/?$ /online-classes/bhajan-kirtan/ [R=301,L]
+RewriteRule ^indian-classical-raga-khayal/?$ /online-classes/indian-classical-vocal/ [R=301,L]
+
+# ---------- B. Recommended consolidation (check Search Console first) ----------
+# Commercial posts competing with the class pages (country variants look like doorway pages)
+RewriteRule ^harmonium-teacher-online-for-personalized-lessons/?$ /online-classes/harmonium/ [R=301,L]
+RewriteRule ^online-harmonium-lessons-usa/?$ /online-classes/harmonium/ [R=301,L]
+RewriteRule ^online-harmonium-lessons-uk/?$ /online-classes/harmonium/ [R=301,L]
+RewriteRule ^bhajan-and-kirtan-classes-online-uk/?$ /online-classes/bhajan-kirtan/ [R=301,L]
+RewriteRule ^indian-classical-music-classes-online-uk/?$ /online-classes/indian-classical-vocal/ [R=301,L]
+RewriteRule ^best-online-music-teachers-for-indian-classical-vocals/?$ /online-classes/indian-classical-vocal/ [R=301,L]
+RewriteRule ^indian-music-classes-online-usa/?$ /online-classes/ [R=301,L]
+RewriteRule ^best-online-music-lessons-uk/?$ /online-classes/ [R=301,L]
+RewriteRule ^one-to-one-online-music-lessons-personalized-learning-for-all-levels/?$ /online-classes/ [R=301,L]
+RewriteRule ^indian-music-school-online-with-reviews/?$ /hear-from-our-attendees/ [R=301,L]
+
+# Duplicate topics: keep the stronger post
+RewriteRule ^what-is-kirtan/?$ /what-is-kirtan-a-complete-guide-for-western-travelers/ [R=301,L]
+RewriteRule ^kirtan-for-beginners/?$ /what-is-kirtan-a-complete-guide-for-western-travelers/ [R=301,L]
+RewriteRule ^beginner-kirtan-tips/?$ /how-to-lead-kirtan-at-your-yoga-studio-complete-guide/ [R=301,L]
+RewriteRule ^advanced-harmonium-techniques-for-kirtan/?$ /advanced-harmonium-techniques-for-kirtan-leaders-professional-mastery-guide/ [R=301,L]
+RewriteRule ^spiritual-music-benefits/?$ /kirtan-meditation-devotional-music-for-mental-health/ [R=301,L]
+RewriteRule ^harmonium-in-bhajans/?$ /how-to-sing-bhajans-with-harmonium/ [R=301,L]
+RewriteRule ^(alankars-in-singing|how-to-practice-alankars-correctly|advanced-alankar-techniques|indian-classical-singing-basics|learn-indian-classical-music|indian-classical-singing-exercises|how-to-practice-palta|daily-palta-routines)/?$ /indian-classical-music-singing-exercises/ [R=301,L]
+RewriteRule ^breath-control-in-singing/?$ /how-to-improve-singing-voice-quality/ [R=301,L]
+RewriteRule ^swara-practice-for-beginners/?$ /basics-of-sa-re-ga-ma-in-indian-vocals/ [R=301,L]
+RewriteRule ^learn-tala-online/?$ /understanding-tala-and-rhythm-in-indian-music/ [R=301,L]
+
+# ---------- C. Off-brand (Carnatic / violin; the school teaches Hindustani music) ----------
+RewriteRule ^10-tips-for-mastering-carnatic-vocal-techniques-for-beginners/?$ - [G,L]
+RewriteRule ^how-to-choose-the-right-instrument-for-your-child-violin-vs-mridangam/?$ - [G,L]
+RewriteRule ^learn-violin-online/?$ - [G,L]
+</IfModule>

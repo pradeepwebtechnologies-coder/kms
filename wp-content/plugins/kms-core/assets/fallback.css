@@ -1,0 +1,13 @@
+/* Minimal styles for KMS widgets when the Krishna Music School theme is not active. */
+.km-icon{width:1.1em;height:1.1em;vertical-align:-.15em;margin-right:.35em}
+.km-cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.km-card,.km-plan,.km-review{border:1px solid #ddd;border-radius:10px;padding:1rem}
+.km-plans{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.km-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.6rem 1rem;border-radius:999px;background:#f28c1b;color:#1a0f05;text-decoration:none;font-weight:600}
+.km-checklist,.km-contact-list,.km-trust{list-style:none;padding:0}
+.km-facts__row{display:flex;gap:1rem;border-bottom:1px solid #eee;padding:.4rem 0}.km-facts dt{min-width:10rem;font-weight:600}
+.km-form__grid{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.km-field input,.km-field select,.km-field textarea{width:100%;padding:.5rem}
+.km-form__hp{position:absolute;left:-9999px}
+.km-stars .is-on{fill:currentColor;color:#e3a008}
+.screen-reader-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}

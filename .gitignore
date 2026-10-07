@@ -1,0 +1,7 @@
+# Local test WordPress (tests/local-wp.sh)
+.wp-local/
+# Client photos used by the local test setup
+tests/fixtures/media/
+node_modules/
+.DS_Store
+__pycache__/

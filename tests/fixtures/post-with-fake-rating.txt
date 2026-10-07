@@ -1,0 +1,18 @@
+<!-- wp:paragraph -->
+<p>Singing bhajans with a harmonium is one of the most rewarding ways to begin Indian devotional music. This guide covers posture, the drone, and your first three bhajans.</p>
+<!-- /wp:paragraph -->
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Start with the drone</h2>
+<!-- /wp:heading -->
+<!-- wp:paragraph -->
+<p>Hold Sa and Pa together while you sing. Keep the bellows moving smoothly.</p>
+<!-- /wp:paragraph -->
+<!-- wp:html -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MusicSchool","name":"Krishna Music School","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.95","reviewCount":"500"}}</script>
+<!-- /wp:html -->
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Three bhajans to learn first</h2>
+<!-- /wp:heading -->
+<!-- wp:list -->
+<ul class="wp-block-list"><li>Raghupati Raghav Raja Ram</li><li>Hare Krishna Hare Rama</li><li>Om Namah Shivaya</li></ul>
+<!-- /wp:list -->
