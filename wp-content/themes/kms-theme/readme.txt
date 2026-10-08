@@ -31,6 +31,7 @@ Icons (in KMS Core): Lucide, ISC licence; Simple Icons, CC0.
 = 1.0.1 =
 * Homepage retreat heading follows the retreat dates in KMS Facts instead of fixed text about the place, length and group size.
 * The automatic announcement bar no longer says "places open".
+* Blog posts: removed about 150px of extra space above and below the title (a content spacing rule also matched the post header).
 * Hero image alt text: Customizer, else the Media Library. The built-in description (now without "singing", which the photo does not show) applies to the school's rooftop photo only.
 
 = 1.0.0 =

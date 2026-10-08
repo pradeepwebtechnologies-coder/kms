@@ -73,6 +73,7 @@ Only publish numbers you can prove. These appear in the hero, in schema descript
 |---|---|---|
 | Pushkar Winter Retreat, 8 days | 11–18 Nov 2026 · 11–18 Dec 2026 · 11–18 Jan 2027 · 11–18 Feb 2027 · ₹30,000 (₹28,000 group rate) · max 10 · accommodation and meals not included | ☐ |
 | Himalaya Summer Retreat, Upper Bhagsu, 10 days | 2026 batches are over. **Enter the 2027 dates**, or the site shows "dates to be announced" · ₹25,000 (₹22,000 for groups of 10–15) | ☐ |
+| Registration form link | ⚠️ **Missing.** Both Register buttons on the winter retreat page link to the placeholder `GOOGLE_FORM_REGISTRATION_LINK_HERE`. Send the real Google Form URL. | ☐ |
 
 ## Testimonials
 

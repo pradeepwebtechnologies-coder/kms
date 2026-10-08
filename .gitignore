@@ -1,5 +1,7 @@
-# Local test WordPress (tests/local-wp.sh)
+# Local test WordPress (tests/local-wp.sh) and the preview site (bin/preview/)
 .wp-local/
+.wp-preview/
+dist/preview/
 # Client photos used by the local test setup
 tests/fixtures/media/
 node_modules/

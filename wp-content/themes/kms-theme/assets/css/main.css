@@ -447,7 +447,7 @@ table { border-collapse: collapse; width: 100%; }
 }
 
 /* ---------- Entry content (pages and posts) ---------- */
-.km-page .km-wrap--content, .km-post .km-wrap--content { padding-top: clamp(28px, 4vw, 48px); padding-bottom: var(--km-section); }
+.km-page > .km-wrap--content, .km-post > .km-wrap--content { padding-top: clamp(28px, 4vw, 48px); padding-bottom: var(--km-section); }
 .km-page .km-wrap--wide, .km-page .km-wrap--legacy { padding-top: clamp(28px, 4vw, 48px); padding-bottom: var(--km-section); }
 .km-featured { margin: 0 0 2rem; }
 .km-featured img { border-radius: 18px; width: 100%; }

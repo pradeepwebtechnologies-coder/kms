@@ -35,6 +35,7 @@ PHP
 	$WP core install --url="$URL" --title="Krishna Music School" --admin_user=admin --admin_password=admin --admin_email=admin@example.com --skip-email
 	$WP option update siteurl "$URL" && $WP option update home "$URL"
 	$WP rewrite structure '/%postname%/'
+	$WP post delete 1 2 --force --quiet # WordPress's "Hello world!" post and "Sample Page"
 
 	ln -sfn "$ROOT/wp-content/themes/kms-theme" wordpress/wp-content/themes/kms-theme
 	ln -sfn "$ROOT/wp-content/plugins/kms-core" wordpress/wp-content/plugins/kms-core

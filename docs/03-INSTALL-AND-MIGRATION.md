@@ -92,7 +92,7 @@ Retreat and performance pages render through the legacy fallback. For each one:
 3. Make sure the page has **one H1** (the title; the theme prints it) and **no** old `<style>` or `<script type="application/ld+json">` blocks.
 4. When no page is left on Divi, untick **Keep `<style>` blocks inside old page content** in KMS Facts.
 
-Order: the **winter retreat page** first (it is selling now), then the summer retreat, then the performance pages.
+Order: the **winter retreat page** first (it is selling now), then the summer retreat, then the performance pages. The winter retreat page also has a copy of the old site footer pasted into its content (it shows as a second footer under the new theme), and its Register buttons need the real form link.
 
 ## 9. Go-live checklist
 

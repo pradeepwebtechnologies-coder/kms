@@ -32,6 +32,7 @@ Classes, reviews, FAQs, enquiry form, structured data, llms.txt and the single f
 * Old Divi images keep their Media Library alt text when the Divi module has none.
 * Retreat batches help text: delete a batch when it is full.
 * Removed unused values from the front-end script settings.
+* Starter content import: the Blog page is reported as published, which it always was.
 
 = 1.0.0 =
 * First release.

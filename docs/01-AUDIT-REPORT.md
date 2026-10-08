@@ -5,6 +5,9 @@
 
 > **Bottom line.** The biggest problem is not keywords. The site **contradicts itself about basic facts** (prices, founding year, founder's name, PIN code, student numbers, ratings). It also carries **structured data and testimonials that look fabricated**. Google and AI assistants both reward consistent, verifiable facts. Until the facts agree, no theme or keyword work will get the school recommended reliably. The online-class offer, which is the business goal, is also buried: it is not in the main menu, and it is the *secondary* button in the hero.
 
+
+> **Update, 8 October 2026: fix this on the live site now.** Both registration buttons on the winter retreat page ("Register Now" and "Register Through Google Form") link to the placeholder text `GOOGLE_FORM_REGISTRATION_LINK_HERE`. The site redirects that to the homepage, so nobody can register from the page that is selling right now. Replace it with the real Google Form link in the page's Divi Code module. The same page also has a stray "```" and a copy of the old site footer pasted into its content. Found while building the Netlify preview; not caught in the 7 October crawl.
+
 ---
 
 ## 1. The 12 issues that matter most (fix in this order)

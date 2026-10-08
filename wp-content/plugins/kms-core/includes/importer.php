@@ -188,7 +188,7 @@ function kms_import_starter( $opts = array() ) {
 				continue;
 			}
 			/* translators: %s: title */
-			$log[] = sprintf( __( 'Page created as draft: %s', 'kms-core' ), $title );
+			$log[] = sprintf( 'blog' === $slug ? __( 'Page created and published: %s', 'kms-core' ) : __( 'Page created as draft: %s', 'kms-core' ), $title );
 		}
 		if ( isset( $fact_keys[ $slug ] ) && empty( $facts[ $fact_keys[ $slug ] ] ) ) {
 			$facts[ $fact_keys[ $slug ] ] = (string) $page_id;

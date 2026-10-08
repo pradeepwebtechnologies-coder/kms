@@ -40,6 +40,21 @@ wp-content/
 bin/build.sh          # → dist/kms-theme.zip, dist/kms-core.zip
 ```
 
+## Preview on Netlify (for review only)
+
+Netlify serves static files and can't run WordPress, so `bin/preview/` builds a static copy of the new site to look at and share:
+
+```sh
+KMS_WP_DIR=.wp-preview KMS_WP_PORT=8091 tests/local-wp.sh   # first run installs; leave it running
+bin/preview/build.sh                                        # second terminal: writes dist/preview/
+```
+
+Then drag the `dist/preview` folder onto <https://app.netlify.com/drop>. Log in first so the site is kept and you can update it by dropping a new folder on its *Deploys* page.
+
+- **Included:** the new homepage, classes, prices, FAQ, About, Reviews and Contact pages. The real retreat, performance, legal and kept blog pages are copied from the live site and rendered the way the new theme renders them until they are rebuilt. `/llms.txt` and `/robots.txt` are as production will serve them.
+- **Not included:** the enquiry form (switched off), WordPress admin, redirects, Rank Math, emails and real hosting speed. Check those on a Hostinger staging copy ([install guide](docs/03-INSTALL-AND-MIGRATION.md)).
+- Every page is `noindex`, so the preview never competes with the live site in Google.
+
 ## Tests
 
 `tests/` holds the scripts used to check the build against a local WordPress (SQLite, PHP built-in server):
