@@ -201,7 +201,7 @@ Google Search Console data (clicks per URL, coverage, CWV field data), the Googl
 | Working enquiry form (leads saved in WP **and** emailed, with WhatsApp handoff); no fake newsletter | Delete the Divi demo pages, `/home/` and the duplicate retreat-terms page; deactivate WooCommerce and Elementor |
 | `/llms.txt`, AI-crawler-friendly `robots.txt` | Hostinger: allow GPTBot, enable page cache |
 | Breadcrumbs (visible and in schema), real 404 template | Featured images for posts; author = Vini Devda |
-| Fast: one stylesheet (8 KB compressed), two small scripts (4 KB compressed), no jQuery, no page builder | Blog merges and rewrites (content plan) |
+| Fast: one stylesheet (11 KB compressed), two small scripts (4 KB compressed), no jQuery, no page builder | Blog merges and rewrites (content plan) |
 | Divi fallback: old Divi pages render their content instead of raw `[et_pb_…]` shortcodes | Check that each migrated page looks right |
 
 ---

@@ -208,7 +208,7 @@ function km_section_header( $eyebrow, $title, $intro = '', $id = '' ) {
 	if ( $eyebrow ) {
 		echo '<p class="km-eyebrow">' . esc_html( $eyebrow ) . '</p>';
 	}
-	echo '<h2 class="km-section__title"' . ( $id ? ' id="' . esc_attr( $id ) . '"' : '' ) . '>' . esc_html( $title ) . '</h2>';
+	echo '<h2 class="km-section__title"' . ( $id ? ' id="' . esc_attr( $id ) . '"' : '' ) . '>' . km_highlight( $title ) . '</h2>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in km_highlight().
 	if ( $intro ) {
 		echo '<p class="km-section__intro">' . esc_html( $intro ) . '</p>';
 	}
@@ -291,6 +291,32 @@ function km_retreats_title( $limit ) {
 		return sprintf( __( 'Music retreats in %s', 'kms-theme' ), $towns[0] );
 	}
 	return __( 'Music retreats in India', 'kms-theme' );
+}
+
+/**
+ * Escape text and colour the parts wrapped in *asterisks* with the saffron gradient.
+ *
+ * @param string $text Plain text.
+ * @return string HTML.
+ */
+function km_highlight( $text ) {
+	return (string) preg_replace( '/\*([^*]+)\*/', '<span class="km-hl">$1</span>', esc_html( $text ) );
+}
+
+/**
+ * Badge on the hero photo: students and countries from KMS Facts.
+ */
+function km_hero_badge() {
+	$students  = km_fact( 'students', '' );
+	$countries = km_fact( 'countries', '' );
+	if ( '' === $students ) {
+		return;
+	}
+	echo '<p class="km-hero__badge"><span class="km-hero__badge-icon">' . km_icon( 'globe' ) . '</span><span><strong>' . esc_html( sprintf( /* translators: %s: number of students */ __( '%s students', 'kms-theme' ), $students ) ) . '</strong>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	if ( '' !== $countries ) {
+		echo esc_html( sprintf( /* translators: %s: number of countries */ __( 'from %s countries', 'kms-theme' ), $countries ) );
+	}
+	echo '</span></p>';
 }
 
 /**

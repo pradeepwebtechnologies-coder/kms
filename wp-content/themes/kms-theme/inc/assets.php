@@ -2,7 +2,7 @@
 /**
  * Styles, scripts, font preloading and the hero image preload.
  *
- * Budget: one stylesheet, one small deferred script, one self-hosted font file.
+ * Budget: one stylesheet, one small deferred script, two self-hosted font files (Merriweather 900 and Inter).
  *
  * @package KMS_Theme
  */
@@ -35,10 +35,12 @@ function km_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'km_enqueue_assets' );
 
 /**
- * Preload the heading font and the front-page hero image (the likely LCP element).
+ * Preload the fonts and the front-page hero image (the likely LCP element).
  */
 function km_preload() {
-	echo '<link rel="preload" href="' . esc_url( get_template_directory_uri() . '/assets/fonts/fraunces-latin-wght.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	foreach ( array( 'merriweather-latin-900.woff2', 'inter-latin-wght.woff2' ) as $font ) {
+		echo '<link rel="preload" href="' . esc_url( get_template_directory_uri() . '/assets/fonts/' . $font ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	}
 
 	if ( is_front_page() ) {
 		$hero = km_hero_image_id();

@@ -76,6 +76,7 @@ function kms_starter_courses() {
 			'order'   => 1,
 			'meta'    => array(
 				'kms_icon'         => 'piano',
+				'kms_badge'        => 'Most popular', // As on the current site; confirm with the school.
 				'kms_tagline'      => 'Learn to play harmonium and accompany your own singing, from your very first note.',
 				'kms_answer'       => 'Live one-to-one harmonium classes on {platforms} with {founder}, for complete beginners, yoga teachers and kirtan leaders. Within 10 classes most students can play and sing 4–5 bhajans or kirtans with confidence. Each online class lasts {minutes} minutes; a single class costs {price_single} and 10 classes cost {price_pack10}.',
 				'kms_audience'     => "Complete beginners — no musical background needed\nYoga teachers who want to lead chanting or kirtan in class\nKirtan leaders who want to accompany themselves\nBhajan singers and spiritual seekers drawn to mantra",
@@ -123,6 +124,7 @@ function kms_starter_courses() {
 			'order'   => 2,
 			'meta'    => array(
 				'kms_icon'         => 'mic-vocal',
+				'kms_badge'        => 'Most popular', // As on the current site; confirm with the school.
 				'kms_tagline'      => 'From Sa Re Ga Ma to ragas and bhajans: build pitch, breath and confidence.',
 				'kms_answer'       => 'Live one-to-one Indian singing lessons on {platforms} with {founder}, rooted in Hindustani classical training. Ideal if you believe you cannot sing, and just as useful for experienced singers who want raga, bhajan and kirtan technique. Each online class lasts {minutes} minutes; a single class costs {price_single} and 10 classes cost {price_pack10}.',
 				'kms_audience'     => "\"I can't sing\" beginners — we start from your natural voice\nYoga teachers and kirtan leaders who want a steadier, stronger voice\nSingers from other styles (pop, jazz, choir) exploring Indian music\nSpiritual seekers who want to chant mantras correctly",

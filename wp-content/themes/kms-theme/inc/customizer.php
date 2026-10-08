@@ -21,7 +21,7 @@ function km_customizer_texts() {
 		'km_announcement_text' => array( __( 'Announcement bar text (empty = next retreat date automatically)', 'kms-theme' ), '', 'text' ),
 		'km_announcement_url'  => array( __( 'Announcement bar link', 'kms-theme' ), '', 'url' ),
 		'km_hero_eyebrow'      => array( __( 'Hero: small line above the title', 'kms-theme' ), 'Live one-to-one classes from Pushkar, India', 'text' ),
-		'km_hero_title'        => array( __( 'Hero: main title (the page H1)', 'kms-theme' ), 'Online Indian Music Classes, Taught Live from Pushkar', 'text' ),
+		'km_hero_title'        => array( __( 'Hero: main title (the page H1). Wrap words in *asterisks* to colour them.', 'kms-theme' ), 'Online Indian Music Classes, *Taught Live from Pushkar*', 'text' ),
 		'km_hero_text'         => array( __( 'Hero: paragraph', 'kms-theme' ), 'Learn harmonium, singing, bhajan and kirtan, Hindustani classical vocal or tabla one-to-one with {founder}. {years} years of teaching, complete beginners welcome, and classes at times that work in your time zone.', 'textarea' ),
 		'km_hero_image_alt'    => array( __( 'Hero: image description (alt text; empty = the Media Library alt text)', 'kms-theme' ), '', 'text' ),
 		'km_hub_title'         => array( __( 'Online classes page: title', 'kms-theme' ), 'Online Indian Music Classes', 'text' ),

@@ -75,6 +75,14 @@ Only publish numbers you can prove. These appear in the hero, in schema descript
 | Himalaya Summer Retreat, Upper Bhagsu, 10 days | 2026 batches are over. **Enter the 2027 dates**, or the site shows "dates to be announced" · ₹25,000 (₹22,000 for groups of 10–15) | ☐ |
 | Registration form link | ⚠️ **Missing.** Both Register buttons on the winter retreat page link to the placeholder `GOOGLE_FORM_REGISTRATION_LINK_HERE`. Send the real Google Form URL. | ☐ |
 
+## Shown by the new design
+
+| Item | Default (from the current site) | Confirm |
+|---|---|---|
+| "Most popular" badge | Harmonium and Singing classes (as on the current homepage). Each class has a **Card badge** field; empty = no badge. | ☐ |
+| Founder quote | "I believe everyone is musical — the question is not 'Can I learn?' but 'Am I ready to open my ears and heart?' …" (current About page) | ☐ |
+| Live performance prices | Folk band from ₹80,000 · Cultural concerts and festivals from ₹2,50,000 · Solo artists from ₹15,000 · Bollywood from ₹60,000 · Corporate: custom packages · Sufi from ₹50,000 · Dinner concerts from ₹40,000 · Fusion from ₹70,000 · Devotional nights from ₹35,000 (current homepage). Edit in **KMS Facts → Live performances**. | ☐ |
+
 ## Testimonials
 
 Only reviews that can be traced to a public source are imported: 10 TripAdvisor reviews (2014–2020) already on `/hear-from-our-attendees/`. Each one has a **Verified** checkbox. Tick it after matching the review on TripAdvisor or Google.

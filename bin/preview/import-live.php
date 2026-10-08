@@ -69,6 +69,29 @@ function kms_preview_meta( $html, $attr, $key ) {
 	return '';
 }
 
+/**
+ * Undo the live site's image optimiser. It swaps every image for an SVG placeholder that
+ * carries the real address and loads it with a script the new theme does not have.
+ *
+ * @param string $html Content.
+ * @return string
+ */
+function kms_preview_restore_images( $html ) {
+	return (string) preg_replace_callback(
+		'#src="data:image/svg\+xml;base64,([A-Za-z0-9+/=]+)"#',
+		static function ( $m ) {
+			$svg = (string) base64_decode( $m[1], true );
+			if ( ! preg_match( '#bv-img-url="([^"]+)"#', $svg, $url ) ) {
+				return $m[0];
+			}
+			// .../uploads/al_opt_content/IMAGE/<host>/wp-content/uploads/2025/10/a.jpg.bv.webp → .../uploads/2025/10/a.jpg
+			$real = preg_replace( '#^(https?://[^/]+)/wp-content/uploads/al_opt_content/IMAGE/[^/]+(/wp-content/uploads/.+?)\.bv\.webp$#', '$1$2', $url[1] );
+			return 'src="' . esc_url( $real ) . '"';
+		},
+		$html
+	);
+}
+
 $kms_count = 0;
 foreach ( glob( $kms_dir . '/*.html' ) as $kms_file ) {
 	$slug = sanitize_title( basename( $kms_file, '.html' ) );
@@ -90,6 +113,7 @@ foreach ( glob( $kms_dir . '/*.html' ) as $kms_file ) {
 		// Not built with Divi: the content as WordPress printed it, unchanged.
 		$content = "<!-- wp:html -->\n" . trim( $body[0] ) . "\n<!-- /wp:html -->";
 	}
+	$content = kms_preview_restore_images( $content );
 	// Divi loads jQuery and the new theme does not, so page scripts that need it stop working.
 	if ( preg_match_all( '#<script(?![^>]*ld\+json)[^>]*>(.*?)</script>#is', $content, $scripts ) && preg_match( '#\bjQuery\b|\$\(#', implode( "\n", $scripts[1] ) ) ) {
 		WP_CLI::warning( "$slug: a script on this page uses jQuery, which the new theme does not load." );

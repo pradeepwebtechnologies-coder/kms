@@ -34,6 +34,7 @@ function kms_course_field_ui() {
 		'kms_price_note'   => array( __( 'Price note (e.g. "Long-term programmes priced on request")', 'kms-core' ), 'text' ),
 		'kms_teaches'      => array( __( 'Skills taught, comma separated (schema "teaches")', 'kms-core' ), 'text' ),
 		'kms_icon'         => array( __( 'Icon', 'kms-core' ), 'icon' ),
+		'kms_badge'        => array( __( 'Card badge (optional, e.g. "Most popular")', 'kms-core' ), 'text' ),
 		'kms_wa_text'      => array( __( 'WhatsApp message prefilled by the button', 'kms-core' ), 'text' ),
 	);
 }

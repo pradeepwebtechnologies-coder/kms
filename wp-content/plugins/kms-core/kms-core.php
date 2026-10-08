@@ -3,7 +3,7 @@
  * Plugin Name:       KMS Core — Krishna Music School
  * Plugin URI:        https://krishnamusicschool.com/
  * Description:       Classes, reviews, FAQs, enquiry form, structured data, llms.txt and the single facts registry for krishnamusicschool.com. Works with the "Krishna Music School" theme.
- * Version:           1.0.1
+ * Version:           1.1.0
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Author:            Krishna Music School
@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'KMS_CORE_VERSION', '1.0.1' );
+define( 'KMS_CORE_VERSION', '1.1.0' );
 define( 'KMS_CORE_FILE', __FILE__ );
 define( 'KMS_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'KMS_CORE_URL', plugin_dir_url( __FILE__ ) );

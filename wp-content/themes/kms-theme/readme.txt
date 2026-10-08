@@ -23,10 +23,17 @@ Facts (prices, phone, hours, retreat dates): Settings → KMS Facts (plugin).
 
 Krishna Music School theme, (C) 2026 Krishna Music School. GPLv2 or later.
 
-Fraunces font: Copyright 2018 The Fraunces Project Authors, SIL Open Font License 1.1 (assets/fonts/OFL.txt).
+Merriweather font: Copyright 2016 The Merriweather Project Authors. Inter font: Copyright 2020 The Inter Project Authors. Both SIL Open Font License 1.1 (assets/fonts/OFL.txt).
 Icons (in KMS Core): Lucide, ISC licence; Simple Icons, CC0.
 
 == Changelog ==
+
+= 1.1.0 =
+* New design in the look of the school's current site: dark backgrounds, saffron-to-amber gradients, Merriweather headings and Inter text (both self-hosted), glowing photo frames, green trust badges and tag pills.
+* Homepage: gradient highlight in the title (wrap words in *asterisks* in the Customizer), photo badge, price line, light class section with "Most popular" ribbons and a call-to-action box, reviews with a stats row, live performances section, two-column FAQ, and a "Start your musical journey" form section.
+* Richer footer with a performances column, contact icons and buttons.
+* Blog posts and old page-builder pages keep a light reading area, which their own styles were written for.
+* Phones: price table becomes one card per class; compact performance cards; two-column footer.
 
 = 1.0.1 =
 * Homepage retreat heading follows the retreat dates in KMS Facts instead of fixed text about the place, length and group size.

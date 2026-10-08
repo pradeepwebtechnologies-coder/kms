@@ -133,6 +133,16 @@ function kms_llms_text() {
 		$out[] = '';
 	}
 
+	$shows = kms_performances();
+	if ( $shows ) {
+		$out[] = '## Live performances (events, weddings, hotels)';
+		foreach ( $shows as $show ) {
+			$note  = rtrim( $show['description'], '.' ) . '. ' . ( $show['price'] ? 'From ' . kms_format_inr( $show['price'] ) . '.' : 'Custom packages.' );
+			$out[] = kms_llms_link( $show['name'], $show['url'] ? $show['url'] : home_url( '/' ), $note );
+		}
+		$out[] = '';
+	}
+
 	$pages = array(
 		'about'        => array( 'About the school and ' . $founder, 'History, teaching method and the founder\'s background.' ),
 		'reviews'      => array( 'Student reviews', 'Reviews from TripAdvisor and Google, with links to the originals.' ),

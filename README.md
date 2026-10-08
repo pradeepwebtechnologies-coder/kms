@@ -14,7 +14,7 @@ A rebuild of **krishnamusicschool.com** aimed at one goal: **more enrolments in 
 
 ```
 wp-content/
-├── themes/kms-theme/      Presentation: templates, CSS (8 KB compressed), JS (1.4 KB), one self-hosted font
+├── themes/kms-theme/      Presentation: templates, CSS (11 KB compressed), JS (1.4 KB), two self-hosted fonts (Merriweather, Inter)
 └── plugins/kms-core/      Data and logic, kept out of the theme so content survives a theme change
 ```
 
