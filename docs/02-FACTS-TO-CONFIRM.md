@@ -51,7 +51,8 @@ Only publish numbers you can prove. These appear in the hero, in schema descript
 |---|---|---|---|
 | Single online class | ⚠️ ₹1,500 | ₹800–1,200 (About, Contact "trial class") | ☐ |
 | 5-class package | ⚠️ ₹6,500 | ₹7,125 (Harmonium page); €67.50 (Bhajan page) | ☐ |
-| 10-class package | ⚠️ ₹13,500 | ₹13,950 (Singing, Harmonium); ₹6,500–8,000 (About) | ☐ |
+| 10-class package | ⚠️ ₹13,500 | ₹13,950 (Singing, Harmonium); ₹6,500–8,000 (About); ₹12,000 for a "10-week online course" (Singing) | ☐ |
+| Raga & khayal (online) | ⚠️ ₹1,500 per class; long-term plans priced with the student | The Raga page sells its own list: ₹2,500–3,500 per 60-minute trial, ₹8,000–12,000 or ₹15,000–20,000 a month, and a 4-week online bootcamp for ₹40,000–50,000 | ☐ |
 | ⚠️ Package logic | At ₹6,500 / 5 and ₹13,500 / 10, the 10-class package costs **more per class** (₹1,350) than the 5-class package (₹1,300). Pick prices where the bigger package is cheaper per class (e.g. 10 for ₹12,500). The site will then mark it "Best value" automatically. | — | ☐ |
 | International prices | Shown as "≈ US$ / € / £" conversions from the INR price (rate set in KMS Facts). You can set exact USD/EUR/GBP prices per class to override. | €15 "USD" (Bhajan page); "$10" (a testimonial) | ☐ |
 | Online class length | ⚠️ 40 minutes | 40–60 min (Singing page) | ☐ |
