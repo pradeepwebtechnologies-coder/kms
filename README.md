@@ -49,7 +49,7 @@ KMS_WP_DIR=.wp-preview KMS_WP_PORT=8091 tests/local-wp.sh   # first run installs
 bin/preview/build.sh                                        # second terminal: writes dist/preview/
 ```
 
-Then drag the `dist/preview` folder onto <https://app.netlify.com/drop>. Log in first so the site is kept and you can update it by dropping a new folder on its *Deploys* page.
+`dist/preview` is committed, and `netlify.toml` tells Netlify to publish only that folder. A Netlify project connected to this repository redeploys on every push, with a deploy preview for each pull request. After changing the theme, plugin or facts, run the build again and commit `dist/preview`. Without a connected project, drag the `dist/preview` folder onto <https://app.netlify.com/drop> instead (log in first so the site is kept).
 
 - **Included:** the new homepage, classes, prices, FAQ, About, Reviews and Contact pages. The real retreat, performance, legal and kept blog pages are copied from the live site and rendered the way the new theme renders them until they are rebuilt. `/llms.txt` and `/robots.txt` are as production will serve them.
 - **Not included:** the enquiry form (switched off), WordPress admin, redirects, Rank Math, emails and real hosting speed. Check those on a Hostinger staging copy ([install guide](docs/03-INSTALL-AND-MIGRATION.md)).
