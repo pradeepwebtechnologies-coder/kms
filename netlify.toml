@@ -1,0 +1,5 @@
+# Netlify publishes only the static preview of the new site, built by bin/preview/build.sh
+# and committed in dist/preview. The WordPress theme and plugin need WordPress hosting.
+[build]
+  publish = "dist/preview"
+  command = "echo 'Nothing to build: dist/preview is committed'"

@@ -23,7 +23,7 @@ Plan for about half a day: two hours of setup, then a careful page-by-page check
 - Fix the **PIN code** (305022) and the **founder name** spelling, and add the **TripAdvisor listing URL**.
 - Set the founder photo, logo and default share image to Media Library URLs.
 - Update ratings and their "last checked" month.
-- Review the **retreat batches** (past batches hide automatically) and add the 2027 Himalaya dates when they are known.
+- Review the **retreat batches** and add the 2027 Himalaya dates when they are known. Past batches hide automatically. **Delete a batch as soon as it is full**: every batch on the list is shown as open for booking, on the site and to Google.
 - Leave every box under **Search and AI engines** ticked.
 
 Click **Run checks** at the top of the page. It tests 404 handling, `/llms.txt`, robots.txt, facts and unused plugins.
@@ -71,6 +71,7 @@ Then review and publish:
 | **Deactivate Elementor** (no page uses it) | Removes unused CSS/JS. |
 | Delete the old JSON-LD from the homepage's Divi code module and from `/online-harmonium-lessons-usa/` | Already hidden by KMS Core (*Remove JSON-LD pasted inside content*), but delete it at the source too. |
 | Remove the invented testimonials listed in the facts worksheet from every page | Legal and trust risk. Use the Reviews system instead. |
+| **Settings → Ad Inserter: disable code blocks 5, 6 and 7, and replace block 8** with one box that makes only confirmed claims (or deactivate Ad Inserter) | Ad Inserter adds up to four sales boxes to every post, whatever the theme. They claim "Only 3 trial slots open this month", a 4.9★ rating, 500+ students and a €15 "Free Trial", quote an invented "James R., London", and spell the founder "Vini Devra". |
 | Site Kit → Sign in with Google: turn off One Tap for visitors | It loads `accounts.google.com` on every page for nobody. |
 
 ## 7. Hostinger
@@ -92,7 +93,7 @@ Retreat and performance pages render through the legacy fallback. For each one:
 3. Make sure the page has **one H1** (the title; the theme prints it) and **no** old `<style>` or `<script type="application/ld+json">` blocks.
 4. When no page is left on Divi, untick **Keep `<style>` blocks inside old page content** in KMS Facts.
 
-Order: the **winter retreat page** first (it is selling now), then the summer retreat, then the performance pages.
+Order: the **winter retreat page** first (it is selling now), then the summer retreat, then the performance pages. The winter retreat page also has a copy of the old site footer pasted into its content (it shows as a second footer under the new theme), and its Register buttons need the real form link.
 
 ## 9. Go-live checklist
 
@@ -110,4 +111,4 @@ Order: the **winter retreat page** first (it is selling now), then the summer re
 - **Prices, phone, hours, retreat dates**: Settings → KMS Facts, and each class's *Class details* box.
 - **A new class**: Classes → Add new. It appears on the homepage, the hub, the menu, the footer, the price table, the schema and `llms.txt` automatically.
 - **A new review**: Reviews → Add new. Only genuine reviews, with the source link.
-- **Retreat dates**: one line per batch in KMS Facts → Retreats.
+- **Retreat dates**: one line per batch in KMS Facts → Retreats. Delete a batch when it is full.

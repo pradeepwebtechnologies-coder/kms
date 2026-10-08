@@ -36,6 +36,7 @@ function kms_meta_fields() {
 			'kms_price_note'   => array( 'string', '' ),
 			'kms_teaches'      => array( 'string', '' ),
 			'kms_icon'         => array( 'string', 'music' ),
+			'kms_badge'        => array( 'string', '' ),
 			'kms_wa_text'      => array( 'string', '' ),
 		),
 		'kms_review' => array(

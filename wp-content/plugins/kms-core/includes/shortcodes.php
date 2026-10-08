@@ -88,6 +88,13 @@ function kms_register_shortcodes() {
 	add_shortcode( 'kms_trust', 'kms_render_trust_bar' );
 	add_shortcode( 'kms_contact', 'kms_render_contact_list' );
 	add_shortcode( 'kms_review_links', 'kms_render_review_links' );
+	add_shortcode( 'kms_stats', 'kms_render_stats' );
+	add_shortcode(
+		'kms_performances',
+		static function ( $atts ) {
+			return kms_render_performances( shortcode_atts( array( 'limit' => 0, 'heading' => 'h3' ), $atts, 'kms_performances' ) );
+		}
+	);
 
 	add_shortcode(
 		'kms_founder',

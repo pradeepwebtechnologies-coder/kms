@@ -1,22 +1,30 @@
-/* Block editor: match the front-end typography so editors see what visitors see. */
+/* Block editor: the light "paper" look of blog posts and old pages, with the site's fonts. */
 @font-face {
-	font-family: "Fraunces";
-	src: url("../fonts/fraunces-latin-wght.woff2") format("woff2");
-	font-weight: 600 700;
+	font-family: "Merriweather";
+	src: url("../fonts/merriweather-latin-900.woff2") format("woff2");
+	font-weight: 700 900;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Inter";
+	src: url("../fonts/inter-latin-wght.woff2") format("woff2");
+	font-weight: 400 800;
 	font-display: swap;
 }
 body {
-	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-	font-size: 1.08rem;
+	font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+	font-size: 1.06rem;
 	line-height: 1.65;
-	color: #1d1611;
-	background: #fffdf9;
+	color: #1c130c;
+	background: #fffaf4;
 }
-h1, h2, h3, h4, .editor-post-title__input {
-	font-family: "Fraunces", Georgia, serif;
-	font-weight: 650;
-	line-height: 1.15;
+h1, h2, .editor-post-title__input {
+	font-family: "Merriweather", Georgia, serif;
+	font-weight: 900;
+	line-height: 1.2;
 }
-a { color: #1565c0; }
-blockquote { border-left: 4px solid #f28c1b; padding-left: 1.25em; }
-.wp-block-shortcode { background: #fbf4ea; border-radius: 8px; }
+h3, h4 { font-family: "Inter", system-ui, sans-serif; font-weight: 750; line-height: 1.25; }
+a { color: #b45309; }
+blockquote { border-left: 4px solid #ff7a18; padding-left: 1.25em; }
+.wp-block-shortcode { background: #fff1e2; border-radius: 8px; }
+.wp-block-button__link { background: linear-gradient(90deg, #ff7a18, #ff9a3c); color: #1a0f08; border-radius: 10px; font-weight: 700; }

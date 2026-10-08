@@ -39,7 +39,7 @@ $km_url   = $km_match ? get_permalink( $km_match ) : get_post_type_archive_link(
 $km_title = $km_match ? get_the_title( $km_match ) : __( 'Online Indian music classes', 'kms-theme' );
 $km_text  = $km_match ? kms_course_answer( $km_match->ID ) : kms_fill( __( 'Live one-to-one classes with {founder} in harmonium, singing, bhajan and kirtan, Hindustani classical vocal and tabla. Complete beginners welcome.', 'kms-theme' ) );
 ?>
-<aside class="km-post-cta" aria-labelledby="km-post-cta-title">
+<aside class="km-post-cta km-light" aria-labelledby="km-post-cta-title">
 	<p class="km-eyebrow"><?php esc_html_e( 'Learn this with a teacher', 'kms-theme' ); ?></p>
 	<h2 class="km-post-cta__title" id="km-post-cta-title"><a href="<?php echo esc_url( $km_url ); ?>"><?php echo esc_html( $km_title ); ?></a></h2>
 	<p><?php echo esc_html( $km_text ); ?></p>

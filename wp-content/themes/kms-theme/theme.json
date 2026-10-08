@@ -10,44 +10,49 @@
 			"customGradient": false,
 			"palette": [
 				{
-					"slug": "ink",
-					"name": "Ink",
-					"color": "#1d1611"
+					"slug": "black",
+					"name": "Black",
+					"color": "#0b0b0b"
 				},
 				{
-					"slug": "night",
-					"name": "Night",
-					"color": "#15100c"
+					"slug": "charcoal",
+					"name": "Charcoal",
+					"color": "#151515"
 				},
 				{
 					"slug": "saffron",
 					"name": "Saffron",
-					"color": "#f28c1b"
+					"color": "#ff7a18"
+				},
+				{
+					"slug": "amber",
+					"name": "Amber",
+					"color": "#ff9a3c"
+				},
+				{
+					"slug": "saffron-light",
+					"name": "Saffron (light)",
+					"color": "#ffb870"
 				},
 				{
 					"slug": "saffron-text",
-					"name": "Saffron (text)",
-					"color": "#a84f08"
+					"name": "Saffron (text on light backgrounds)",
+					"color": "#b45309"
 				},
 				{
-					"slug": "krishna-blue",
-					"name": "Krishna blue",
-					"color": "#1565c0"
+					"slug": "gold",
+					"name": "Gold",
+					"color": "#fbbf24"
 				},
 				{
-					"slug": "peacock",
-					"name": "Peacock",
-					"color": "#0f766e"
+					"slug": "paper",
+					"name": "Paper",
+					"color": "#fffaf4"
 				},
 				{
-					"slug": "cream",
-					"name": "Cream",
-					"color": "#fbf4ea"
-				},
-				{
-					"slug": "sand",
-					"name": "Sand",
-					"color": "#f2e5d3"
+					"slug": "ink",
+					"name": "Ink",
+					"color": "#1c130c"
 				},
 				{
 					"slug": "white",
@@ -77,13 +82,13 @@
 			"fontFamilies": [
 				{
 					"slug": "display",
-					"name": "Fraunces (headings)",
-					"fontFamily": "\"Fraunces\", \"Iowan Old Style\", \"Palatino Linotype\", Georgia, serif"
+					"name": "Merriweather (headings)",
+					"fontFamily": "\"Merriweather\", Georgia, \"Times New Roman\", serif"
 				},
 				{
 					"slug": "body",
-					"name": "System sans (body)",
-					"fontFamily": "system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Noto Sans Devanagari\", sans-serif"
+					"name": "Inter (text)",
+					"fontFamily": "\"Inter\", system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Noto Sans Devanagari\", sans-serif"
 				}
 			],
 			"fontSizes": [
@@ -112,42 +117,6 @@
 		},
 		"shadow": {
 			"defaultPresets": false
-		}
-	},
-	"styles": {
-		"color": {
-			"background": "#fffdf9",
-			"text": "#1d1611"
-		},
-		"typography": {
-			"fontFamily": "var(--wp--preset--font-family--body)",
-			"lineHeight": "1.65"
-		},
-		"elements": {
-			"heading": {
-				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--display)",
-					"fontWeight": "650",
-					"lineHeight": "1.15"
-				}
-			},
-			"link": {
-				"color": {
-					"text": "#1565c0"
-				}
-			},
-			"button": {
-				"color": {
-					"background": "#f28c1b",
-					"text": "#1a0e03"
-				},
-				"border": {
-					"radius": "999px"
-				},
-				"typography": {
-					"fontWeight": "700"
-				}
-			}
 		}
 	}
 }

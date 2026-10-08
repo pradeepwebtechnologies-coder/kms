@@ -9,7 +9,7 @@ Every value below is used in three places at once: the visible pages, the struct
 | Fact | Default seeded by the theme | Conflicting values seen | Confirm |
 |---|---|---|---|
 | Business name | Krishna Music School | "Krishna Music School Pushkar" (alternate name) | ☐ |
-| Founder's name (exact spelling) | ⚠️ **Vini Devda** | Vini Devra; "vinod-dewra" (image file) | ☐ |
+| Founder's name (exact spelling) | ⚠️ **Vini Devda** | Vini Devra (`/home/`, 7 posts, and the Ad Inserter sales boxes in 60 posts); Vini Dewra (Raga page); Vinod Dewra (concert page); "vinod-dewra" (image file) | ☐ |
 | Founder's role | Founder & lead teacher | — | ☐ |
 | Founded (year) | ⚠️ **2008** | 2007 (retreat pages, old schema); 2013 (threebestrated.in) | ☐ |
 | Years teaching | Calculated automatically from the founding year (2026 → "18+") | 15+, 17+ | — |
@@ -51,7 +51,8 @@ Only publish numbers you can prove. These appear in the hero, in schema descript
 |---|---|---|---|
 | Single online class | ⚠️ ₹1,500 | ₹800–1,200 (About, Contact "trial class") | ☐ |
 | 5-class package | ⚠️ ₹6,500 | ₹7,125 (Harmonium page); €67.50 (Bhajan page) | ☐ |
-| 10-class package | ⚠️ ₹13,500 | ₹13,950 (Singing, Harmonium); ₹6,500–8,000 (About) | ☐ |
+| 10-class package | ⚠️ ₹13,500 | ₹13,950 (Singing, Harmonium); ₹6,500–8,000 (About); ₹12,000 for a "10-week online course" (Singing) | ☐ |
+| Raga & khayal (online) | ⚠️ ₹1,500 per class; long-term plans priced with the student | The Raga page sells its own list: ₹2,500–3,500 per 60-minute trial, ₹8,000–12,000 or ₹15,000–20,000 a month, and a 4-week online bootcamp for ₹40,000–50,000 | ☐ |
 | ⚠️ Package logic | At ₹6,500 / 5 and ₹13,500 / 10, the 10-class package costs **more per class** (₹1,350) than the 5-class package (₹1,300). Pick prices where the bigger package is cheaper per class (e.g. 10 for ₹12,500). The site will then mark it "Best value" automatically. | — | ☐ |
 | International prices | Shown as "≈ US$ / € / £" conversions from the INR price (rate set in KMS Facts). You can set exact USD/EUR/GBP prices per class to override. | €15 "USD" (Bhajan page); "$10" (a testimonial) | ☐ |
 | Online class length | ⚠️ 40 minutes | 40–60 min (Singing page) | ☐ |
@@ -73,6 +74,15 @@ Only publish numbers you can prove. These appear in the hero, in schema descript
 |---|---|---|
 | Pushkar Winter Retreat, 8 days | 11–18 Nov 2026 · 11–18 Dec 2026 · 11–18 Jan 2027 · 11–18 Feb 2027 · ₹30,000 (₹28,000 group rate) · max 10 · accommodation and meals not included | ☐ |
 | Himalaya Summer Retreat, Upper Bhagsu, 10 days | 2026 batches are over. **Enter the 2027 dates**, or the site shows "dates to be announced" · ₹25,000 (₹22,000 for groups of 10–15) | ☐ |
+| Registration form link | ⚠️ **Missing.** Both Register buttons on the winter retreat page link to the placeholder `GOOGLE_FORM_REGISTRATION_LINK_HERE`. Send the real Google Form URL. | ☐ |
+
+## Shown by the new design
+
+| Item | Default (from the current site) | Confirm |
+|---|---|---|
+| "Most popular" badge | Harmonium and Singing classes (as on the current homepage). Each class has a **Card badge** field; empty = no badge. | ☐ |
+| Founder quote | "I believe everyone is musical — the question is not 'Can I learn?' but 'Am I ready to open my ears and heart?' …" (current About page) | ☐ |
+| Live performance prices | Folk band from ₹80,000 · Cultural concerts and festivals from ₹2,50,000 · Solo artists from ₹15,000 · Bollywood from ₹60,000 · Corporate: custom packages · Sufi from ₹50,000 · Dinner concerts from ₹40,000 · Fusion from ₹70,000 · Devotional nights from ₹35,000 (current homepage). Edit in **KMS Facts → Live performances**. | ☐ |
 
 ## Testimonials
 

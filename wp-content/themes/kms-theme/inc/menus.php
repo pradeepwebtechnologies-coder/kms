@@ -200,8 +200,10 @@ function km_footer_school_links() {
 	$add( __( 'Student reviews', 'kms-theme' ), $page( 'reviews' ) );
 	$add( __( 'Pushkar winter retreat', 'kms-theme' ), km_page_link( '8-day-winter-music-retreat-in-pushkar-singing-mantra-chanting-kirtan-harmonium' ) );
 	$add( __( 'Himalaya summer retreat', 'kms-theme' ), km_page_link( 'summer-music-retreat-upper-bhagsu' ) );
-	$performances = $page( 'performances' );
-	$add( __( 'Book a live performance', 'kms-theme' ), $performances ? $performances : km_page_link( 'folk-music-band-chokhi-vini-project-pushkar' ) );
+	if ( ! function_exists( 'kms_performances' ) || ! kms_performances() ) {
+		$performances = $page( 'performances' );
+		$add( __( 'Book a live performance', 'kms-theme' ), $performances ? $performances : km_page_link( 'folk-music-band-chokhi-vini-project-pushkar' ) );
+	}
 	$add( __( 'FAQ', 'kms-theme' ), $page( 'faq' ) );
 	$blog = (int) get_option( 'page_for_posts' );
 	$add( __( 'Blog', 'kms-theme' ), $blog ? get_permalink( $blog ) : '' );

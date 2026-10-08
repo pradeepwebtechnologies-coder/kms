@@ -37,6 +37,7 @@ function kms_facts_schema() {
 				'founder_name'       => array( 'Founder name (exact spelling)', 'text', 'Vini Devda' ),
 				'founder_title'      => array( 'Founder role', 'text', 'Founder and lead teacher' ),
 				'founder_bio'        => array( 'Founder bio (2–4 sentences, no pronouns needed)', 'textarea', '{founder} is the third generation of a family of musicians and began learning Indian classical music at the age of five in the traditional guru–shishya way. {founder} holds a degree in Indian Classical Vocal Music from Government College, Ajmer, has taught students from {countries} countries since {founding_year}, and leads the Chokhi Vini Project, the school\'s Rajasthani folk band.' ),
+				'founder_quote'      => array( 'Founder quote (shown next to the photo; empty = hidden)', 'textarea', "I believe everyone is musical — the question is not 'Can I learn?' but 'Am I ready to open my ears and heart?' I've taught complete beginners who thought they were tone-deaf, and watched them lead kirtans 10 weeks later. Music is patience, practice, and playfulness." ),
 				'founder_education'  => array( 'Founder education (institution)', 'text', 'Government College, Ajmer', 'Shown as alumniOf in schema. Leave empty to omit.' ),
 				'founder_credential' => array( 'Founder qualification', 'text', 'Degree in Indian Classical Vocal Music' ),
 				'founder_knows'      => array( 'Founder expertise (comma separated)', 'text', 'Tabla, Hindustani classical vocal, Harmonium, Sitar, Dholak, Bhajan, Kirtan, Mantra chanting, Rajasthani folk music' ),
@@ -130,7 +131,26 @@ function kms_facts_schema() {
 					"Pushkar Winter Music Retreat | 2026-12-11 | 2026-12-18 | 30000 | {$retreat_url} | Pushkar, Rajasthan | 8 days of singing, mantra chanting, kirtan, bhajan and harmonium. 16 hours of live teaching, maximum 10 students.\n" .
 					"Pushkar Winter Music Retreat | 2027-01-11 | 2027-01-18 | 30000 | {$retreat_url} | Pushkar, Rajasthan | 8 days of singing, mantra chanting, kirtan, bhajan and harmonium. 16 hours of live teaching, maximum 10 students.\n" .
 					"Pushkar Winter Music Retreat | 2027-02-11 | 2027-02-18 | 30000 | {$retreat_url} | Pushkar, Rajasthan | 8 days of singing, mantra chanting, kirtan, bhajan and harmonium. 16 hours of live teaching, maximum 10 students.",
-					'Past batches hide automatically. Each batch is published as an EducationEvent in schema.',
+					'Past batches hide automatically. Delete a batch as soon as it is full: every batch listed here is shown as open for booking, on the site and in schema (EducationEvent).',
+				),
+			),
+		),
+		'performances' => array(
+			'title'  => __( 'Live performances', 'kms-core' ),
+			'fields' => array(
+				'performances' => array(
+					'Performance types (one per line: Name | page URL | short description | starting price in INR, 0 = custom packages)',
+					'textarea',
+					"Folk Music Band | /folk-music-band-chokhi-vini-project-pushkar/ | Authentic Rajasthani folk with traditional instruments. 5–10 piece ensemble. | 80000\n" .
+					"Cultural Concerts & Festivals | /rajasthani-cultural-concerts-festivals/ | Grand cultural events showcasing Rajasthani heritage. Multi-act productions. | 250000\n" .
+					"Solo Artists | /solo-artists/ | Vocalist, sitar, bansuri, guitar, tabla. Intimate, elegant performances. | 15000\n" .
+					"Bollywood Performances | /bollywood-dance-music-shows-for-events-weddings/ | High-energy crowd-pleasers for sangeet and parties. | 60000\n" .
+					"Corporate Events | /corporate-musical-events-cultural-shows/ | Professional entertainment for corporate functions and cultural showcases. | 0\n" .
+					"Sufi Musical Experience | /kabali-sufi-musical-experience/ | A mystical Sufi performance and spiritual journey. | 50000\n" .
+					"Dinner Concerts | /dinner-concerts-private-music-evenings/ | Intimate musical evenings for private gatherings. | 40000\n" .
+					"Fusion Instrumental | /fusion-instrumental-groups/ | Indian and Western instruments together. Contemporary and refined. | 70000\n" .
+					"Devotional Music Nights | /bhajan-kirtan-devotional-music-nights-in-pushkar/ | Bhajan and kirtan sessions in a sacred atmosphere. | 35000",
+					'Shown on the homepage and in llms.txt. Prices are the starting prices from the current site.',
 				),
 			),
 		),
@@ -380,7 +400,7 @@ function kms_page_url( $key, $fragment = '' ) {
 		'refund'       => array( 'refund-policy', 'refund-and-cancellation-policy' ),
 		'privacy'      => array( 'privacy-policy' ),
 		'terms'        => array( 'terms-and-conditions', 'terms' ),
-		'performances' => array( 'performances', 'live-performances' ),
+		'performances' => array( 'performances', 'live-performances', 'grand-music-concerts-stage-programs' ),
 	);
 
 	$url = '';
@@ -453,6 +473,28 @@ function kms_retreat_batches( $upcoming_only = true ) {
 }
 
 /**
+ * Performance types from KMS Facts.
+ *
+ * @return array<int, array{name:string, url:string, description:string, price:int}>
+ */
+function kms_performances() {
+	$items = array();
+	foreach ( kms_fact_lines( 'performances' ) as $line ) {
+		$cols = array_map( 'trim', explode( '|', $line ) );
+		if ( '' === $cols[0] ) {
+			continue;
+		}
+		$items[] = array(
+			'name'        => $cols[0],
+			'url'         => isset( $cols[1] ) && '' !== $cols[1] ? kms_absolute_url( $cols[1] ) : '',
+			'description' => isset( $cols[2] ) ? $cols[2] : '',
+			'price'       => isset( $cols[3] ) ? (int) preg_replace( '/\D+/', '', $cols[3] ) : 0,
+		);
+	}
+	return $items;
+}
+
+/**
  * Turn a site-relative path into an absolute URL.
  *
  * @param string $url Absolute URL or /path/.
@@ -496,6 +538,10 @@ function kms_fact_image( $key, $size = 'large', $attrs = array() ) {
 	}
 	$id = attachment_url_to_postid( $url );
 	if ( $id ) {
+		// Alt text set in the Media Library describes the actual photo, so it wins over a generated one.
+		if ( '' !== trim( (string) get_post_meta( $id, '_wp_attachment_image_alt', true ) ) ) {
+			unset( $attrs['alt'] );
+		}
 		return wp_get_attachment_image( $id, $size, false, $attrs );
 	}
 	$attr_html = '';

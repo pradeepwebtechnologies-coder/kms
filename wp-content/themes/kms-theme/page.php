@@ -14,7 +14,8 @@ while ( have_posts() ) :
 	$km_legacy = false !== strpos( (string) get_post_field( 'post_content', get_the_ID() ), '[et_pb_' );
 	km_page_header( get_the_title(), has_excerpt() ? get_the_excerpt() : '' );
 	?>
-	<article <?php post_class( 'km-page' ); ?>>
+	<?php // Old page-builder content was designed for a light background, so it keeps one until the page is rebuilt. ?>
+	<article <?php post_class( $km_legacy ? 'km-page km-light' : 'km-page' ); ?>>
 		<div class="km-wrap <?php echo $km_legacy ? 'km-wrap--legacy' : 'km-wrap--content'; ?>">
 			<?php if ( has_post_thumbnail() && ! $km_legacy ) : ?>
 				<figure class="km-featured"><?php the_post_thumbnail( 'large', array( 'loading' => 'eager' ) ); ?></figure>

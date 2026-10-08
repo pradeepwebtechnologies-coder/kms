@@ -91,7 +91,8 @@ function kms_stars( $rating ) {
  *
  * @return string
  */
-function kms_render_trust_bar() {
+function kms_render_trust_bar( $args = array() ) {
+	$args  = wp_parse_args( is_array( $args ) ? $args : array(), array( 'students' => true ) );
 	$items = array();
 	if ( kms_fact( 'tripadvisor_rating' ) ) {
 		$text    = sprintf( /* translators: 1: rating, 2: count */ __( '%1$s on TripAdvisor (%2$s reviews)', 'kms-core' ), kms_fact( 'tripadvisor_rating' ), kms_fact( 'tripadvisor_count' ) );
@@ -104,7 +105,7 @@ function kms_render_trust_bar() {
 		$items[] = kms_icon( 'google' ) . ( $url ? '<a href="' . esc_url( $url ) . '" rel="noopener" target="_blank">' . esc_html( $text ) . '</a>' : esc_html( $text ) );
 	}
 	$items[] = kms_icon( 'award' ) . esc_html( sprintf( /* translators: %s: years */ __( '%s years of teaching', 'kms-core' ), kms_years_teaching() . '+' ) );
-	if ( kms_fact( 'students' ) ) {
+	if ( $args['students'] && kms_fact( 'students' ) ) {
 		$items[] = kms_icon( 'globe' ) . esc_html( sprintf( /* translators: 1: students, 2: countries */ __( '%1$s students from %2$s countries', 'kms-core' ), kms_fact( 'students' ), kms_fact( 'countries' ) ) );
 	}
 	return '<ul class="km-trust">' . implode( '', array_map( static function ( $i ) {
@@ -150,16 +151,25 @@ function kms_render_course_cards( $args = array() ) {
 			$modes[] = __( 'In Pushkar', 'kms-core' );
 		}
 
-		$html .= '<article class="km-card km-course-card">';
-		$html .= '<div class="km-course-card__icon">' . kms_icon( (string) kms_meta( $course->ID, 'kms_icon' ) ) . '</div>';
-		$html .= '<' . $heading . ' class="km-course-card__title"><a class="km-stretched" href="' . esc_url( $url ) . '">' . esc_html( get_the_title( $course ) ) . '</a></' . $heading . '>';
+		$badge  = (string) kms_meta( $course->ID, 'kms_badge' );
+		$level  = (string) kms_meta( $course->ID, 'kms_level' );
+		$html  .= '<article class="km-card km-course-card' . ( $badge ? ' has-badge' : '' ) . '">';
+		if ( $badge ) {
+			$html .= '<p class="km-course-card__badge">' . kms_icon( 'star' ) . esc_html( $badge ) . '</p>';
+		}
+		$html .= '<div class="km-course-card__head"><span class="km-course-card__icon">' . kms_icon( (string) kms_meta( $course->ID, 'kms_icon' ) ) . '</span>';
+		$html .= '<' . $heading . ' class="km-course-card__title"><a class="km-stretched" href="' . esc_url( $url ) . '">' . esc_html( get_the_title( $course ) ) . '</a></' . $heading . '></div>';
+		$html .= '<ul class="km-pills">';
+		foreach ( $modes as $mode ) {
+			$html .= '<li class="km-pill">' . esc_html( $mode ) . '</li>';
+		}
+		if ( $level ) {
+			$html .= '<li class="km-pill km-pill--soft">' . esc_html( $level ) . '</li>';
+		}
+		$html .= '</ul>';
 		if ( $tagline ) {
 			$html .= '<p class="km-course-card__tagline">' . esc_html( $tagline ) . '</p>';
 		}
-		$html .= '<ul class="km-course-card__meta">';
-		$html .= '<li>' . kms_icon( 'video' ) . esc_html( implode( ' + ', $modes ) ) . '</li>';
-		$html .= '<li>' . kms_icon( 'user' ) . esc_html( (string) kms_meta( $course->ID, 'kms_level' ) ) . '</li>';
-		$html .= '</ul>';
 		if ( $from ) {
 			$html .= '<p class="km-course-card__price"><span class="km-course-card__from">' . esc_html__( 'From', 'kms-core' ) . '</span> ' . kms_price_html( $from ) . ' <span class="km-course-card__per">' . esc_html__( 'per class', 'kms-core' ) . '</span></p>';
 		}
@@ -276,8 +286,13 @@ function kms_render_price_table() {
 			$html .= '<span class="km-table__note">' . esc_html( $note ) . '</span>';
 		}
 		$html .= '</th>';
-		foreach ( array( 'single', 'pack5', 'pack10' ) as $key ) {
-			$html .= '<td>' . ( isset( $by_key[ $key ] ) ? kms_price_html( $by_key[ $key ]['inr'], $by_key[ $key ]['usd'] ) : '<span class="km-muted">—</span>' ) . '</td>';
+		foreach ( array(
+			'single' => __( 'Single class', 'kms-core' ),
+			'pack5'  => __( '5 classes', 'kms-core' ),
+			'pack10' => __( '10 classes', 'kms-core' ),
+		) as $key => $label ) {
+			// data-label names the column when the table becomes a stack of cards on phones.
+			$html .= '<td data-label="' . esc_attr( $label ) . '"' . ( isset( $by_key[ $key ] ) ? '>' . kms_price_html( $by_key[ $key ]['inr'], $by_key[ $key ]['usd'] ) : ' class="is-empty"><span class="km-muted">—</span>' ) . '</td>';
 		}
 		$html .= '</tr>';
 	}
@@ -334,8 +349,16 @@ function kms_render_reviews( $args = array() ) {
 			)
 		);
 
+		$source_html = '';
+		if ( $source ) {
+			/* translators: %s: platform name */
+			$label       = sprintf( __( 'Review on %s', 'kms-core' ), $source );
+			$badge       = $verified ? kms_icon( 'shield-check' ) : '';
+			$source_html = '<span class="km-review__source">' . $badge . ( $source_url ? '<a href="' . esc_url( $source_url ) . '" target="_blank" rel="noopener nofollow">' . esc_html( $label ) . '</a>' : esc_html( $label ) ) . '</span>';
+		}
+
 		$html .= '<figure class="km-review">';
-		$html .= kms_stars( (int) kms_meta( $review->ID, 'kms_rating' ) );
+		$html .= '<div class="km-review__top">' . kms_stars( (int) kms_meta( $review->ID, 'kms_rating' ) ) . $source_html . '</div>';
 		$html .= '<blockquote class="km-review__quote">' . wpautop( esc_html( wp_strip_all_tags( $review->post_content ) ) ) . '</blockquote>';
 		$html .= '<figcaption class="km-review__by"><strong>' . esc_html( get_the_title( $review ) ) . '</strong>';
 		$loc   = (string) kms_meta( $review->ID, 'kms_location' );
@@ -344,12 +367,6 @@ function kms_render_reviews( $args = array() ) {
 		}
 		if ( $details ) {
 			$html .= '<span class="km-review__detail">' . esc_html( implode( ' · ', $details ) ) . '</span>';
-		}
-		if ( $source ) {
-			/* translators: %s: platform name */
-			$label = sprintf( __( 'Review on %s', 'kms-core' ), $source );
-			$badge = $verified ? kms_icon( 'shield-check' ) : '';
-			$html .= '<span class="km-review__source">' . $badge . ( $source_url ? '<a href="' . esc_url( $source_url ) . '" target="_blank" rel="noopener nofollow">' . esc_html( $label ) . '</a>' : esc_html( $label ) ) . '</span>';
 		}
 		$html .= '</figcaption></figure>';
 	}
@@ -409,9 +426,10 @@ function kms_render_facts() {
 			$from = $price;
 		}
 	}
-	$rows = array(
+	$founder_role = kms_fact( 'founder_title' ) ? kms_fact( 'founder_title' ) : __( 'Founder', 'kms-core' );
+	$rows         = array(
 		__( 'Founded', 'kms-core' )                    => sprintf( /* translators: 1: year, 2: town */ __( '%1$s in %2$s, Rajasthan, India', 'kms-core' ), kms_fact( 'founding_year' ), kms_fact( 'locality' ) ),
-		__( 'Founder and lead teacher', 'kms-core' )   => kms_fact( 'founder_name' ),
+		$founder_role                                  => kms_fact( 'founder_name' ),
 		__( 'Teaching experience', 'kms-core' )        => sprintf( /* translators: %s: years */ __( '%s years', 'kms-core' ), kms_years_teaching() . '+' ),
 		__( 'Subjects', 'kms-core' )                   => implode( ', ', $subjects ),
 		__( 'Online classes', 'kms-core' )             => sprintf( /* translators: 1: platforms, 2: minutes */ __( 'Live and one-to-one on %1$s, %2$s minutes each', 'kms-core' ), kms_fact( 'platforms' ), kms_fact( 'online_minutes' ) ),
@@ -597,11 +615,21 @@ function kms_render_founder( $heading = 'h3' ) {
 	$about   = kms_page_url( 'about' );
 
 	$html  = '<div class="km-founder">';
-	$html .= '<div class="km-founder__photo">' . kms_fact_image( 'founder_image', 'large', array( 'alt' => sprintf( /* translators: %s: name */ __( '%s, founder of Krishna Music School, singing in Pushkar', 'kms-core' ), $name ), 'loading' => 'lazy' ) ) . '</div>';
+	// Used only when the photo has no alt text in the Media Library (which describes the actual photo).
+	$alt   = implode( ', ', array_filter( array( $name, kms_fact( 'founder_title' ), kms_fact( 'name' ) ) ) );
+	$badge = '';
+	if ( kms_fact( 'tripadvisor_rating' ) ) {
+		/* translators: 1: rating, 2: number of reviews */
+		$badge = '<p class="km-founder__badge">' . kms_icon( 'star' ) . '<span><strong>' . esc_html( sprintf( __( '%s/5 on TripAdvisor', 'kms-core' ), kms_fact( 'tripadvisor_rating' ) ) ) . '</strong>' . esc_html( sprintf( __( '%s reviews of the school', 'kms-core' ), kms_fact( 'tripadvisor_count' ) ) ) . '</span></p>';
+	}
+	$html .= '<div class="km-founder__photo">' . kms_fact_image( 'founder_image', 'large', array( 'alt' => $alt, 'loading' => 'lazy' ) ) . $badge . '</div>';
 	$html .= '<div class="km-founder__body">';
 	$html .= '<p class="km-eyebrow">' . esc_html( kms_fact( 'founder_title' ) ) . '</p>';
 	$html .= '<' . $heading . ' class="km-founder__name">' . esc_html( $name ) . '</' . $heading . '>';
 	$html .= '<p class="km-founder__bio">' . esc_html( kms_fact_text( 'founder_bio' ) ) . '</p>';
+	if ( kms_fact( 'founder_quote' ) ) {
+		$html .= '<blockquote class="km-founder__quote"><p>' . esc_html( kms_fact_text( 'founder_quote' ) ) . '</p></blockquote>';
+	}
 	$html .= '<ul class="km-checklist km-checklist--compact">';
 	foreach ( $creds as $cred ) {
 		$html .= '<li>' . kms_icon( 'award' ) . esc_html( $cred ) . '</li>';
@@ -667,6 +695,86 @@ function kms_render_retreats( $args = array() ) {
 		}
 		/* translators: %s: retreat name */
 		$html .= kms_whatsapp_button( sprintf( __( 'Hi! I am interested in the %s.', 'kms-core' ), $retreat['name'] ), __( 'Ask on WhatsApp', 'kms-core' ), 'km-btn--outline' );
+		$html .= '</div></article>';
+	}
+	return $html . '</div>';
+}
+
+/**
+ * Key numbers: years of teaching, students, countries and the TripAdvisor rating.
+ *
+ * @return string
+ */
+function kms_render_stats() {
+	$stats = array( array( kms_years_teaching() . '+', __( 'Years of teaching', 'kms-core' ) ) );
+	if ( kms_fact( 'students' ) ) {
+		$stats[] = array( kms_fact( 'students' ), __( 'Students taught', 'kms-core' ) );
+	}
+	if ( kms_fact( 'countries' ) ) {
+		$stats[] = array( kms_fact( 'countries' ), __( 'Countries', 'kms-core' ) );
+	}
+	if ( kms_fact( 'tripadvisor_rating' ) ) {
+		/* translators: %s: number of reviews */
+		$stats[] = array( kms_fact( 'tripadvisor_rating' ) . '/5', sprintf( __( 'TripAdvisor, %s reviews', 'kms-core' ), kms_fact( 'tripadvisor_count' ) ) );
+	}
+	$html = '<ul class="km-stats">';
+	foreach ( $stats as $stat ) {
+		$html .= '<li><strong class="km-stats__num">' . esc_html( $stat[0] ) . '</strong><span class="km-stats__label">' . esc_html( $stat[1] ) . '</span></li>';
+	}
+	return $html . '</ul>';
+}
+
+/**
+ * Live performance types from KMS Facts.
+ *
+ * @param array $args { limit:int, heading:string }.
+ * @return string
+ */
+function kms_render_performances( $args = array() ) {
+	$args    = wp_parse_args(
+		$args,
+		array(
+			'limit'   => 0,
+			'heading' => 'h3',
+		)
+	);
+	$heading = in_array( $args['heading'], array( 'h2', 'h3', 'h4' ), true ) ? $args['heading'] : 'h3';
+	$items   = kms_performances();
+	if ( (int) $args['limit'] > 0 ) {
+		$items = array_slice( $items, 0, (int) $args['limit'] );
+	}
+	if ( ! $items ) {
+		return '';
+	}
+	$icons = array(
+		'folk'       => 'drum',
+		'band'       => 'drum',
+		'solo'       => 'mic-vocal',
+		'bollywood'  => 'music',
+		'corporate'  => 'award',
+		'sufi'       => 'sparkles',
+		'dinner'     => 'star',
+		'fusion'     => 'headphones',
+		'devotional' => 'heart-handshake',
+		'concert'    => 'sparkles',
+	);
+	$html = '<div class="km-cards km-cards--shows">';
+	foreach ( $items as $item ) {
+		$icon = 'music';
+		foreach ( $icons as $word => $name ) {
+			if ( false !== stripos( $item['name'], $word ) ) {
+				$icon = $name;
+				break;
+			}
+		}
+		$name  = $item['url'] ? '<a class="km-stretched" href="' . esc_url( $item['url'] ) . '">' . esc_html( $item['name'] ) . '</a>' : esc_html( $item['name'] );
+		$html .= '<article class="km-card km-show"><span class="km-show__icon">' . kms_icon( $icon ) . '</span><div class="km-show__body">';
+		$html .= '<' . $heading . ' class="km-show__name">' . $name . '</' . $heading . '>';
+		if ( $item['description'] ) {
+			$html .= '<p class="km-show__desc">' . esc_html( $item['description'] ) . '</p>';
+		}
+		/* translators: %s: starting price */
+		$html .= '<p class="km-show__price">' . ( $item['price'] ? sprintf( esc_html__( 'From %s', 'kms-core' ), '<strong>' . esc_html( kms_format_inr( $item['price'] ) ) . '</strong>' ) : esc_html__( 'Custom packages', 'kms-core' ) ) . '</p>';
 		$html .= '</div></article>';
 	}
 	return $html . '</div>';

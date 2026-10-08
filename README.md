@@ -14,7 +14,7 @@ A rebuild of **krishnamusicschool.com** aimed at one goal: **more enrolments in 
 
 ```
 wp-content/
-├── themes/kms-theme/      Presentation: templates, CSS (8 KB compressed), JS (1.4 KB), one self-hosted font
+├── themes/kms-theme/      Presentation: templates, CSS (11 KB compressed), JS (1.4 KB), two self-hosted fonts (Merriweather, Inter)
 └── plugins/kms-core/      Data and logic, kept out of the theme so content survives a theme change
 ```
 
@@ -39,6 +39,21 @@ wp-content/
 ```sh
 bin/build.sh          # → dist/kms-theme.zip, dist/kms-core.zip
 ```
+
+## Preview on Netlify (for review only)
+
+Netlify serves static files and can't run WordPress, so `bin/preview/` builds a static copy of the new site to look at and share:
+
+```sh
+KMS_WP_DIR=.wp-preview KMS_WP_PORT=8091 tests/local-wp.sh   # first run installs; leave it running
+bin/preview/build.sh                                        # second terminal: writes dist/preview/
+```
+
+`dist/preview` is committed, and `netlify.toml` tells Netlify to publish only that folder. A Netlify project connected to this repository redeploys on every push, with a deploy preview for each pull request. After changing the theme, plugin or facts, run the build again and commit `dist/preview`. Without a connected project, drag the `dist/preview` folder onto <https://app.netlify.com/drop> instead (log in first so the site is kept).
+
+- **Included:** the new homepage, classes, prices, FAQ, About, Reviews and Contact pages. The real retreat, performance, legal and kept blog pages are copied from the live site and rendered the way the new theme renders them until they are rebuilt. `/llms.txt` and `/robots.txt` are as production will serve them.
+- **Not included:** the enquiry form (switched off), WordPress admin, redirects, Rank Math, emails and real hosting speed. Check those on a Hostinger staging copy ([install guide](docs/03-INSTALL-AND-MIGRATION.md)).
+- Every page is `noindex`, so the preview never competes with the live site in Google.
 
 ## Tests
 

@@ -22,6 +22,8 @@ while ( have_posts() ) :
 			</div>
 		</header>
 
+		<?php // Posts keep a light reading area: the old posts' own styles were written for it. ?>
+		<div class="km-light km-post__body">
 		<div class="km-wrap km-wrap--content">
 			<?php if ( has_post_thumbnail() ) : ?>
 				<figure class="km-featured"><?php the_post_thumbnail( 'large', array( 'loading' => 'eager', 'fetchpriority' => 'high' ) ); ?></figure>
@@ -58,12 +60,13 @@ while ( have_posts() ) :
 			);
 			?>
 		</div>
+		</div>
 	</article>
 	<?php
 	if ( comments_open() || get_comments_number() ) {
-		echo '<div class="km-wrap km-wrap--content">';
+		echo '<div class="km-light"><div class="km-wrap km-wrap--content">';
 		comments_template();
-		echo '</div>';
+		echo '</div></div>';
 	}
 endwhile;
 

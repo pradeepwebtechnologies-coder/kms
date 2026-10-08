@@ -1,0 +1,44 @@
+# Pages and posts copied from https://krishnamusicschool.com into the preview site, one slug per line.
+# The new homepage, classes, prices, FAQ, About, Reviews and Contact come from the KMS Core starter content instead.
+
+# Retreats and classes in Pushkar
+8-day-winter-music-retreat-in-pushkar-singing-mantra-chanting-kirtan-harmonium
+summer-music-retreat-upper-bhagsu
+multi-instrument-training
+
+# Live performances
+grand-music-concerts-stage-programs
+folk-music-band-chokhi-vini-project-pushkar
+solo-artists
+kabali-sufi-musical-experience
+bhajan-kirtan-devotional-music-nights-in-pushkar
+dinner-concerts-private-music-evenings
+fusion-instrumental-groups
+bollywood-dance-music-shows-for-events-weddings
+corporate-musical-events-cultural-shows
+rajasthani-cultural-concerts-festivals
+
+# Legal
+privacy-policy
+terms-and-conditions
+disclaimer
+pushkar-retreat-guidelines-terms-of-participation
+retreat-guidelines-terms-of-participation
+
+# Blog posts marked "keep and improve" in docs/04-CONTENT-AND-AI-PLAN.md
+how-to-sing-bhajans-with-harmonium
+classical-bhajans
+bhajan-vs-kirtan
+harmonium-chords-and-scales-explained
+harmonium-lessons-for-yoga-teachers
+harmonium-for-jazz-musicians
+master-raag-yaman-the-most-important-raga-for-beginners
+raga-theory-for-non-musicians-understand-indian-music-basics-in-2026
+indian-classical-music-ragas
+thaat-in-indian-classical-music
+understanding-tala-and-rhythm-in-indian-music
+basics-of-sa-re-ga-ma-in-indian-vocals
+how-to-improve-singing-voice-quality
+music-learning-tips-for-adults-and-beginners
+kirtan-meditation-devotional-music-for-mental-health
+mantra-chanting-for-beginners-a-travelers-introduction

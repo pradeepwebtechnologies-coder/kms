@@ -2,7 +2,7 @@
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,22 @@ Classes, reviews, FAQs, enquiry form, structured data, llms.txt and the single f
     wp kms health
 
 == Changelog ==
+
+= 1.1.0 =
+* KMS Facts: live performances (name, page, description, starting price) and a founder quote, both with defaults from the current site.
+* Classes: optional card badge (e.g. "Most popular").
+* New output: [kms_stats] (years, students, countries, rating) and [kms_performances]; performances are also listed in llms.txt.
+* Class cards show formats and level as pills; reviews show the source as a pill; the founder photo carries the TripAdvisor rating.
+* Price table: column labels for the phone layout.
+* The trust bar can leave out the students item.
+
+= 1.0.1 =
+* Founder photo alt text: the Media Library alt text when set, otherwise name, role and school. It no longer claims the photo shows singing in Pushkar.
+* The facts list labels the founder with the "Founder role" fact.
+* Old Divi images keep their Media Library alt text when the Divi module has none.
+* Retreat batches help text: delete a batch when it is full.
+* Removed unused values from the front-end script settings.
+* Starter content import: the Blog page is reported as published, which it always was.
 
 = 1.0.0 =
 * First release.

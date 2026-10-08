@@ -8,6 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $km_courses = function_exists( 'kms_get_courses' ) ? kms_get_courses() : array();
+$km_shows   = function_exists( 'kms_performances' ) ? array_slice( kms_performances(), 0, 6 ) : array();
 ?>
 </main>
 
@@ -16,8 +17,11 @@ $km_courses = function_exists( 'kms_get_courses' ) ? kms_get_courses() : array()
 	<div class="km-wrap km-footer__grid">
 		<div class="km-footer__brand">
 			<?php km_logo( true ); ?>
-			<?php if ( km_fact( 'description' ) && function_exists( 'kms_fact_text' ) ) : ?>
-				<p><?php echo esc_html( kms_fact_text( 'description' ) ); ?></p>
+			<?php if ( km_fact( 'founding_year' ) ) : ?>
+				<p class="km-footer__tagline"><?php echo esc_html( sprintf( /* translators: %s: year */ __( 'Authentic Indian music since %s', 'kms-theme' ), km_fact( 'founding_year' ) ) ); ?></p>
+			<?php endif; ?>
+			<?php if ( km_fact( 'tagline' ) && function_exists( 'kms_fact_text' ) ) : ?>
+				<p><?php echo esc_html( kms_fact_text( 'tagline' ) ); ?></p>
 			<?php endif; ?>
 			<?php km_social_links(); ?>
 		</div>
@@ -36,6 +40,22 @@ $km_courses = function_exists( 'kms_get_courses' ) ? kms_get_courses() : array()
 			</nav>
 		<?php endif; ?>
 
+		<?php if ( $km_shows ) : ?>
+			<nav class="km-footer__col" aria-labelledby="km-foot-shows">
+				<h2 class="km-footer__title" id="km-foot-shows"><?php esc_html_e( 'Performances', 'kms-theme' ); ?></h2>
+				<ul>
+					<?php foreach ( $km_shows as $km_show ) : ?>
+						<?php if ( $km_show['url'] ) : ?>
+							<li><a href="<?php echo esc_url( $km_show['url'] ); ?>"><?php echo esc_html( $km_show['name'] ); ?></a></li>
+						<?php endif; ?>
+					<?php endforeach; ?>
+					<?php if ( kms_page_url( 'performances' ) ) : ?>
+						<li><a href="<?php echo esc_url( kms_page_url( 'performances' ) ); ?>"><?php esc_html_e( 'All performances', 'kms-theme' ); ?></a></li>
+					<?php endif; ?>
+				</ul>
+			</nav>
+		<?php endif; ?>
+
 		<nav class="km-footer__col" aria-labelledby="km-foot-school">
 			<h2 class="km-footer__title" id="km-foot-school"><?php esc_html_e( 'The school', 'kms-theme' ); ?></h2>
 			<ul>
@@ -46,13 +66,16 @@ $km_courses = function_exists( 'kms_get_courses' ) ? kms_get_courses() : array()
 		</nav>
 
 		<div class="km-footer__col">
-			<h2 class="km-footer__title"><?php esc_html_e( 'Contact', 'kms-theme' ); ?></h2>
+			<h2 class="km-footer__title"><?php esc_html_e( 'Get in touch', 'kms-theme' ); ?></h2>
 			<?php
 			if ( function_exists( 'kms_render_contact_list' ) ) {
 				echo kms_render_contact_list(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in KMS Core.
 			}
 			?>
-			<a class="km-btn km-btn--primary" href="<?php echo esc_url( km_cta_url() ); ?>"><?php esc_html_e( 'Book a free consultation', 'kms-theme' ); ?></a>
+			<div class="km-footer__buttons">
+				<a class="km-btn km-btn--primary" href="<?php echo esc_url( km_cta_url() ); ?>"><?php esc_html_e( 'Book a free consultation', 'kms-theme' ); ?></a>
+				<?php km_whatsapp_button( '', __( 'WhatsApp us', 'kms-theme' ), 'km-btn--outline' ); ?>
+			</div>
 		</div>
 	</div>
 	<?php endif; ?>
