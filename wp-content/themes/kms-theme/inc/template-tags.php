@@ -141,9 +141,19 @@ function km_hero_image_id() {
  * Hero image markup.
  */
 function km_hero_image() {
-	$id   = km_hero_image_id();
-	$alt  = get_theme_mod( 'km_hero_image_alt', '' );
-	$alt  = $alt ? $alt : sprintf( /* translators: %s: founder */ __( '%s singing on a rooftop in Pushkar, with temple domes behind', 'kms-theme' ), km_fact( 'founder_name', '' ) );
+	$id  = km_hero_image_id();
+	$url = $id ? (string) wp_get_attachment_url( $id ) : km_fact( 'default_image', km_fact( 'founder_image' ) );
+	// Alt text: the Customizer, else the Media Library. The built-in description fits the school's rooftop photo only.
+	$alt = (string) get_theme_mod( 'km_hero_image_alt', '' );
+	if ( '' === $alt && $id ) {
+		$alt = trim( (string) get_post_meta( $id, '_wp_attachment_image_alt', true ) );
+	}
+	if ( '' === $alt ) {
+		$alt = false !== strpos( $url, 'IMG_20230826_14451146' )
+			/* translators: %s: founder */
+			? sprintf( __( '%s on a rooftop in Pushkar, with temple spires behind', 'kms-theme' ), km_fact( 'founder_name', '' ) )
+			: km_fact( 'name', get_bloginfo( 'name' ) );
+	}
 	$args = array(
 		'class'         => 'km-hero__img',
 		'alt'           => $alt,
@@ -155,7 +165,6 @@ function km_hero_image() {
 		echo wp_get_attachment_image( $id, 'large', false, $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		return;
 	}
-	$url = km_fact( 'default_image', km_fact( 'founder_image' ) );
 	if ( $url ) {
 		echo '<img class="km-hero__img" src="' . esc_url( $url ) . '" alt="' . esc_attr( $alt ) . '" width="1600" height="900" fetchpriority="high">';
 	}
@@ -262,6 +271,26 @@ function km_social_links() {
 	if ( $items ) {
 		echo '<ul class="km-social">' . $items . '</ul>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
+}
+
+/**
+ * Homepage retreat heading. Names the town only when every listed batch takes place there.
+ *
+ * @param int $limit Number of batches shown.
+ * @return string
+ */
+function km_retreats_title( $limit ) {
+	$towns = array();
+	foreach ( array_slice( kms_retreat_batches(), 0, $limit ) as $batch ) {
+		$parts   = explode( ',', $batch['place'] );
+		$towns[] = trim( $parts[0] );
+	}
+	$towns = array_unique( $towns );
+	if ( 1 === count( $towns ) && '' !== $towns[0] ) {
+		/* translators: %s: town, e.g. Pushkar */
+		return sprintf( __( 'Music retreats in %s', 'kms-theme' ), $towns[0] );
+	}
+	return __( 'Music retreats in India', 'kms-theme' );
 }
 
 /**

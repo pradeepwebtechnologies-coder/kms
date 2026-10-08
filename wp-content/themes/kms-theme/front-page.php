@@ -100,7 +100,8 @@ $km_core = km_has_kms();
 	<?php if ( $km_retreats ) : ?>
 		<section class="km-section km-section--night" aria-labelledby="km-retreats-title">
 			<div class="km-wrap">
-				<?php km_section_header( __( 'Come to India', 'kms-theme' ), __( 'Music retreats in Pushkar', 'kms-theme' ), __( 'Eight days of singing, mantra chanting, kirtan and harmonium at the school, in small groups of up to 10 students.', 'kms-theme' ), 'km-retreats-title' ); ?>
+				<?php // Length, group size and programme come from each retreat's own description in KMS Facts. ?>
+				<?php km_section_header( __( 'Come to India', 'kms-theme' ), km_retreats_title( 4 ), '', 'km-retreats-title' ); ?>
 				<?php echo $km_retreats; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</div>
 		</section>

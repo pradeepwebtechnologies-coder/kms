@@ -23,7 +23,7 @@ Plan for about half a day: two hours of setup, then a careful page-by-page check
 - Fix the **PIN code** (305022) and the **founder name** spelling, and add the **TripAdvisor listing URL**.
 - Set the founder photo, logo and default share image to Media Library URLs.
 - Update ratings and their "last checked" month.
-- Review the **retreat batches** (past batches hide automatically) and add the 2027 Himalaya dates when they are known.
+- Review the **retreat batches** and add the 2027 Himalaya dates when they are known. Past batches hide automatically. **Delete a batch as soon as it is full**: every batch on the list is shown as open for booking, on the site and to Google.
 - Leave every box under **Search and AI engines** ticked.
 
 Click **Run checks** at the top of the page. It tests 404 handling, `/llms.txt`, robots.txt, facts and unused plugins.
@@ -110,4 +110,4 @@ Order: the **winter retreat page** first (it is selling now), then the summer re
 - **Prices, phone, hours, retreat dates**: Settings → KMS Facts, and each class's *Class details* box.
 - **A new class**: Classes → Add new. It appears on the homepage, the hub, the menu, the footer, the price table, the schema and `llms.txt` automatically.
 - **A new review**: Reviews → Add new. Only genuine reviews, with the source link.
-- **Retreat dates**: one line per batch in KMS Facts → Retreats.
+- **Retreat dates**: one line per batch in KMS Facts → Retreats. Delete a batch when it is full.

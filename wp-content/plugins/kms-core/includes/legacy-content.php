@@ -63,7 +63,8 @@ function kms_divi_to_html( $content ) {
 			$alt = kms_divi_attr( $m[2], 'alt' );
 			$id  = attachment_url_to_postid( $src );
 			if ( $id ) {
-				return '<figure class="km-legacy__image">' . wp_get_attachment_image( $id, 'large', false, array( 'alt' => $alt ) ) . '</figure>';
+				// An empty Divi alt must not override the Media Library alt text.
+				return '<figure class="km-legacy__image">' . wp_get_attachment_image( $id, 'large', false, '' !== $alt ? array( 'alt' => $alt ) : array() ) . '</figure>';
 			}
 			return '<figure class="km-legacy__image"><img src="' . esc_url( $src ) . '" alt="' . esc_attr( $alt ) . '" loading="lazy" decoding="async"></figure>';
 		},

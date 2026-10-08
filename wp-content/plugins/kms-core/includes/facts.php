@@ -130,7 +130,7 @@ function kms_facts_schema() {
 					"Pushkar Winter Music Retreat | 2026-12-11 | 2026-12-18 | 30000 | {$retreat_url} | Pushkar, Rajasthan | 8 days of singing, mantra chanting, kirtan, bhajan and harmonium. 16 hours of live teaching, maximum 10 students.\n" .
 					"Pushkar Winter Music Retreat | 2027-01-11 | 2027-01-18 | 30000 | {$retreat_url} | Pushkar, Rajasthan | 8 days of singing, mantra chanting, kirtan, bhajan and harmonium. 16 hours of live teaching, maximum 10 students.\n" .
 					"Pushkar Winter Music Retreat | 2027-02-11 | 2027-02-18 | 30000 | {$retreat_url} | Pushkar, Rajasthan | 8 days of singing, mantra chanting, kirtan, bhajan and harmonium. 16 hours of live teaching, maximum 10 students.",
-					'Past batches hide automatically. Each batch is published as an EducationEvent in schema.',
+					'Past batches hide automatically. Delete a batch as soon as it is full: every batch listed here is shown as open for booking, on the site and in schema (EducationEvent).',
 				),
 			),
 		),
@@ -496,6 +496,10 @@ function kms_fact_image( $key, $size = 'large', $attrs = array() ) {
 	}
 	$id = attachment_url_to_postid( $url );
 	if ( $id ) {
+		// Alt text set in the Media Library describes the actual photo, so it wins over a generated one.
+		if ( '' !== trim( (string) get_post_meta( $id, '_wp_attachment_image_alt', true ) ) ) {
+			unset( $attrs['alt'] );
+		}
 		return wp_get_attachment_image( $id, $size, false, $attrs );
 	}
 	$attr_html = '';

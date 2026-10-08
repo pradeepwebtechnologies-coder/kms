@@ -409,9 +409,10 @@ function kms_render_facts() {
 			$from = $price;
 		}
 	}
-	$rows = array(
+	$founder_role = kms_fact( 'founder_title' ) ? kms_fact( 'founder_title' ) : __( 'Founder', 'kms-core' );
+	$rows         = array(
 		__( 'Founded', 'kms-core' )                    => sprintf( /* translators: 1: year, 2: town */ __( '%1$s in %2$s, Rajasthan, India', 'kms-core' ), kms_fact( 'founding_year' ), kms_fact( 'locality' ) ),
-		__( 'Founder and lead teacher', 'kms-core' )   => kms_fact( 'founder_name' ),
+		$founder_role                                  => kms_fact( 'founder_name' ),
 		__( 'Teaching experience', 'kms-core' )        => sprintf( /* translators: %s: years */ __( '%s years', 'kms-core' ), kms_years_teaching() . '+' ),
 		__( 'Subjects', 'kms-core' )                   => implode( ', ', $subjects ),
 		__( 'Online classes', 'kms-core' )             => sprintf( /* translators: 1: platforms, 2: minutes */ __( 'Live and one-to-one on %1$s, %2$s minutes each', 'kms-core' ), kms_fact( 'platforms' ), kms_fact( 'online_minutes' ) ),
@@ -597,7 +598,9 @@ function kms_render_founder( $heading = 'h3' ) {
 	$about   = kms_page_url( 'about' );
 
 	$html  = '<div class="km-founder">';
-	$html .= '<div class="km-founder__photo">' . kms_fact_image( 'founder_image', 'large', array( 'alt' => sprintf( /* translators: %s: name */ __( '%s, founder of Krishna Music School, singing in Pushkar', 'kms-core' ), $name ), 'loading' => 'lazy' ) ) . '</div>';
+	// Used only when the photo has no alt text in the Media Library (which describes the actual photo).
+	$alt   = implode( ', ', array_filter( array( $name, kms_fact( 'founder_title' ), kms_fact( 'name' ) ) ) );
+	$html .= '<div class="km-founder__photo">' . kms_fact_image( 'founder_image', 'large', array( 'alt' => $alt, 'loading' => 'lazy' ) ) . '</div>';
 	$html .= '<div class="km-founder__body">';
 	$html .= '<p class="km-eyebrow">' . esc_html( kms_fact( 'founder_title' ) ) . '</p>';
 	$html .= '<' . $heading . ' class="km-founder__name">' . esc_html( $name ) . '</' . $heading . '>';

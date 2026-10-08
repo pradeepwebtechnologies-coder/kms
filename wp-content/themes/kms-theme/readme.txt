@@ -25,3 +25,13 @@ Krishna Music School theme, (C) 2026 Krishna Music School. GPLv2 or later.
 
 Fraunces font: Copyright 2018 The Fraunces Project Authors, SIL Open Font License 1.1 (assets/fonts/OFL.txt).
 Icons (in KMS Core): Lucide, ISC licence; Simple Icons, CC0.
+
+== Changelog ==
+
+= 1.0.1 =
+* Homepage retreat heading follows the retreat dates in KMS Facts instead of fixed text about the place, length and group size.
+* The automatic announcement bar no longer says "places open".
+* Hero image alt text: Customizer, else the Media Library. The built-in description (now without "singing", which the photo does not show) applies to the school's rooftop photo only.
+
+= 1.0.0 =
+* First release.
