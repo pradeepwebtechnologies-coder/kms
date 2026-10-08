@@ -9,7 +9,7 @@ Every value below is used in three places at once: the visible pages, the struct
 | Fact | Default seeded by the theme | Conflicting values seen | Confirm |
 |---|---|---|---|
 | Business name | Krishna Music School | "Krishna Music School Pushkar" (alternate name) | ☐ |
-| Founder's name (exact spelling) | ⚠️ **Vini Devda** | Vini Devra; "vinod-dewra" (image file) | ☐ |
+| Founder's name (exact spelling) | ⚠️ **Vini Devda** | Vini Devra (`/home/`, 7 posts, and the Ad Inserter sales boxes in 60 posts); Vini Dewra (Raga page); Vinod Dewra (concert page); "vinod-dewra" (image file) | ☐ |
 | Founder's role | Founder & lead teacher | — | ☐ |
 | Founded (year) | ⚠️ **2008** | 2007 (retreat pages, old schema); 2013 (threebestrated.in) | ☐ |
 | Years teaching | Calculated automatically from the founding year (2026 → "18+") | 15+, 17+ | — |

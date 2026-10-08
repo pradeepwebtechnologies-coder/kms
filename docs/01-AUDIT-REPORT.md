@@ -8,6 +8,8 @@
 
 > **Update, 8 October 2026: fix this on the live site now.** Both registration buttons on the winter retreat page ("Register Now" and "Register Through Google Form") link to the placeholder text `GOOGLE_FORM_REGISTRATION_LINK_HERE`. The site redirects that to the homepage, so nobody can register from the page that is selling right now. Replace it with the real Google Form link in the page's Divi Code module. The same page also has a stray "```" and a copy of the old site footer pasted into its content. Found while building the Netlify preview; not caught in the 7 October crawl.
 
+> **Update, 8 October 2026: the sales boxes inside every blog post.** The Ad Inserter plugin adds up to four boxes (code blocks 5–8) to all 68 posts. They claim "Only 3 trial slots open this month", "500+ students", a "4.9★ rating" and "17+ years". They also sell a €450 30-day intensive that the Raga page prices at ₹60,000–80,000, offer a "Free Trial" that costs €15 with a "100% Money-Back Guarantee… Zero questions asked", and quote an invented "James R., London | Former CEO". The boxes, and the "Hi Vini Devra" message every one of their WhatsApp buttons pre-fills, are the main source of that spelling (60 posts). Ad Inserter works with any theme, so the new theme does not remove them: disable blocks 5–7 and replace block 8 (install guide §6).
+
 ---
 
 ## 1. The 12 issues that matter most (fix in this order)
@@ -36,7 +38,7 @@ These conflicts are the root cause of the trust and AI-visibility problems. The 
 | Fact | Values found on the live site | Where |
 |---|---|---|
 | Founding year | **2008** · 2007 · 2013 | About page and footer ("Since 2008") · homepage JSON-LD and both retreat pages ("since 2007") · threebestrated.in |
-| Founder name | **Vini Devda** · Vini Devra · "vinod-dewra" | About, Reviews, schema · `/home/` page and threebestrated.in · image filename |
+| Founder name | **Vini Devda** · Vini Devra · Vini Dewra · Vinod Dewra · "vinod-dewra" | About, Reviews, schema · `/home/` page, 7 posts, the Ad Inserter sales boxes in 60 posts, and threebestrated.in · Raga page · concert page · image filename |
 | Founder pronouns | "her father… she has spent 15 years" then "he believes… His teaching" | `/home/` page, consecutive paragraphs (the reviews use "he") |
 | Temple name | **Rangji** · Ranji | About/Contact · `/home/`, Bhajan page |
 | Postcode | 305001 (Ajmer city) · **305022** (Pushkar) | Site-wide · India Post, third-party listing |

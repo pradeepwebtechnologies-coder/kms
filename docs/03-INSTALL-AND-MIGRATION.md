@@ -71,6 +71,7 @@ Then review and publish:
 | **Deactivate Elementor** (no page uses it) | Removes unused CSS/JS. |
 | Delete the old JSON-LD from the homepage's Divi code module and from `/online-harmonium-lessons-usa/` | Already hidden by KMS Core (*Remove JSON-LD pasted inside content*), but delete it at the source too. |
 | Remove the invented testimonials listed in the facts worksheet from every page | Legal and trust risk. Use the Reviews system instead. |
+| **Settings → Ad Inserter: disable code blocks 5, 6 and 7, and replace block 8** with one box that makes only confirmed claims (or deactivate Ad Inserter) | Ad Inserter adds up to four sales boxes to every post, whatever the theme. They claim "Only 3 trial slots open this month", a 4.9★ rating, 500+ students and a €15 "Free Trial", quote an invented "James R., London", and spell the founder "Vini Devra". |
 | Site Kit → Sign in with Google: turn off One Tap for visitors | It loads `accounts.google.com` on every page for nobody. |
 
 ## 7. Hostinger
